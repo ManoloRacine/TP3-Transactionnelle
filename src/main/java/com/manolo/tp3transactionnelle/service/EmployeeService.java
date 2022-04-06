@@ -23,8 +23,8 @@ public class EmployeeService {
         this.documentRepository = documentRepository ;
     }
 
-    public long createCD(String name, String author, int releaseYear, int nbMinutes, int nbAvailable) {
-        CD cd = CD.builder().name(name).
+    public long createCD(String name, String author, int releaseYear, int nbMinutes, String genre, int nbAvailable) {
+        CD cd = CD.builder().name(name).genre(genre).
                 author(author).
                 releaseYear(releaseYear).
                 nbMinutes(nbMinutes).nbAvailable(nbAvailable).build() ;
@@ -32,8 +32,8 @@ public class EmployeeService {
         return cd.getId() ;
     }
 
-    public long createDVD(String name, String author, int releaseYear, int nbMinutes, int nbAvailable) {
-        DVD dvd = DVD.builder().name(name).
+    public long createDVD(String name, String author, int releaseYear, int nbMinutes, String genre, int nbAvailable) {
+        DVD dvd = DVD.builder().name(name).genre(genre).
                 author(author).
                 releaseYear(releaseYear).
                 nbMinutes(nbMinutes).nbAvailable(nbAvailable).build() ;
@@ -51,5 +51,17 @@ public class EmployeeService {
 
     public List<Document> researchDocumentByAuthor(String author) {
         return documentRepository.findAllByAuthor(author) ;
+    }
+
+    public List<Document> researchDocumentByYear(int year) {
+        return documentRepository.findAllByReleaseYear(year) ;
+    }
+
+    public List<Document> researchDocumentByCategory(String category) {
+        return documentRepository.findDocumentByGenre(category) ;
+    }
+
+    public List<Document> researchDocumentContainingTitle(String title) {
+        return documentRepository.findDocumentByNameContains(title) ;
     }
 }

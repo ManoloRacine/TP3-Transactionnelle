@@ -24,6 +24,6 @@ public abstract class Document {
     private int releaseYear ;
     private boolean isBorrowed = false;
     private int nbAvailable ;
-
+    private String genre ;
 
 }
