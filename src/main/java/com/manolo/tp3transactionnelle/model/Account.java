@@ -1,4 +1,4 @@
-package model;
+package com.manolo.tp3transactionnelle.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,10 +20,5 @@ public abstract class Account {
     protected String firstName ;
     protected String lastName ;
     protected String password ;
-
-    @ManyToOne
-    @PrimaryKeyJoinColumn
-    protected Library myLibrary ;
-
 
 }

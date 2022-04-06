@@ -1,4 +1,4 @@
-package model;
+package com.manolo.tp3transactionnelle.model;
 
 import lombok.Builder;
 import lombok.Data;

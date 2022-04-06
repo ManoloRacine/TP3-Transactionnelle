@@ -1,4 +1,4 @@
-package model;
+package com.manolo.tp3transactionnelle.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,7 +25,5 @@ public abstract class Document {
     private boolean isBorrowed = false;
     private int nbAvailable ;
 
-    @ManyToOne
-    private Library library ;
 
 }
