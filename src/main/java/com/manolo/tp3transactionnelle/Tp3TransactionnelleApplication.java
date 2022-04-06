@@ -1,4 +1,4 @@
-package com.example.tp3transactionnelle;
+package com.manolo.tp3transactionnelle;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

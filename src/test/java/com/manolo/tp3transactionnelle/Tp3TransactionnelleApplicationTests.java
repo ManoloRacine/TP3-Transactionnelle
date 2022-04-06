@@ -1,4 +1,4 @@
-package com.example.tp3transactionnelle;
+package com.manolo.tp3transactionnelle;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
