@@ -3,10 +3,13 @@ package com.manolo.tp3transactionnelle.service;
 import com.manolo.tp3transactionnelle.model.Book;
 import com.manolo.tp3transactionnelle.model.CD;
 import com.manolo.tp3transactionnelle.model.DVD;
+import com.manolo.tp3transactionnelle.model.Document;
 import com.manolo.tp3transactionnelle.repository.AccountRepository;
 import com.manolo.tp3transactionnelle.repository.BorrowingRepository;
 import com.manolo.tp3transactionnelle.repository.DocumentRepository;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class EmployeeService {
@@ -44,5 +47,9 @@ public class EmployeeService {
                 .genre(genre).nbAvailable(nbAvailable).build() ;
         documentRepository.save(book) ;
         return book.getId() ;
+    }
+
+    public List<Document> researchDocumentByAuthor(String author) {
+        return documentRepository.findAllByAuthor(author) ;
     }
 }

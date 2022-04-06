@@ -28,8 +28,9 @@ public class Tp3TransactionnelleApplication implements CommandLineRunner {
         System.out.println(adminService.getClientByIdWithBorrowing(idClient));
 
         long idCD = employeeService.createCD("name", "author", 2002, 100,  5);
-        long idDVD = employeeService.createDVD("name", "author", 2002, 100,  5);
+        long idDVD = employeeService.createDVD("name", "author1", 2002, 100,  5);
         long idBook = employeeService.createBook("name", "author", 2020, 200, "testg",  5) ;
 
+        System.out.println(employeeService.researchDocumentByAuthor("author"));
     }
 }
