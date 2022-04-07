@@ -1,7 +1,9 @@
 package com.manolo.tp3transactionnelle;
 
+import com.manolo.tp3transactionnelle.model.Client;
 import com.manolo.tp3transactionnelle.model.Employee;
 import com.manolo.tp3transactionnelle.service.AdminService;
+import com.manolo.tp3transactionnelle.service.ClientService;
 import com.manolo.tp3transactionnelle.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,6 +19,9 @@ public class Tp3TransactionnelleApplication implements CommandLineRunner {
     @Autowired
     private EmployeeService employeeService ;
 
+    @Autowired
+    private ClientService clientService ;
+
     public static void main(String[] args) {
         SpringApplication.run(Tp3TransactionnelleApplication.class, args);
     }
@@ -31,9 +36,11 @@ public class Tp3TransactionnelleApplication implements CommandLineRunner {
         long idDVD = employeeService.createDVD("name1", "author1", 2002, 100, "testg", 5);
         long idBook = employeeService.createBook("name2", "author", 2020, 200, "testg",  5) ;
 
-        System.out.println(employeeService.researchDocumentByAuthor("author"));
-        System.out.println(employeeService.researchDocumentByYear(2002));
-        System.out.println(employeeService.researchDocumentByCategory("testg"));
-        System.out.println(employeeService.researchDocumentContainingTitle("e1"));
+        System.out.println(clientService.researchDocumentByAuthor("author"));
+        System.out.println(clientService.researchDocumentByYear(2002));
+        System.out.println(clientService.researchDocumentByCategory("testg"));
+        System.out.println(clientService.researchDocumentContainingTitle("e1"));
+
+        clientService.borrowDocument(idClient, idBook) ;
     }
 }

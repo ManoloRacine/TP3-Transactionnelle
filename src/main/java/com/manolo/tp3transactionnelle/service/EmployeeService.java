@@ -49,19 +49,5 @@ public class EmployeeService {
         return book.getId() ;
     }
 
-    public List<Document> researchDocumentByAuthor(String author) {
-        return documentRepository.findAllByAuthor(author) ;
-    }
 
-    public List<Document> researchDocumentByYear(int year) {
-        return documentRepository.findAllByReleaseYear(year) ;
-    }
-
-    public List<Document> researchDocumentByCategory(String category) {
-        return documentRepository.findDocumentByGenre(category) ;
-    }
-
-    public List<Document> researchDocumentContainingTitle(String title) {
-        return documentRepository.findDocumentByNameContains(title) ;
-    }
 }

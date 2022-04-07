@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Documents</title>
+</head>
+<body>
+<h1>Page Documents</h1>
+<div></div>
+
+<div></div>
+<table>
+
+    <thead>
+    <th>Type de document</th>
+    <th>Titre</th>
+    <th>Nb Available</th>
+    </thead>
+    <tbody>
+        <th:block th:each="document, stat : ${documents}">
+            <tr>
+                <td th:text="${document.getClass().getSimpleName()}"></td>
+                <td th:text="${document.getName()}"></td>
+                <td th:text="${document.getNbAvailable()}"></td>
+            </tr>
+        </th:block>
+    </tbody>
+</table>
+</body>
+</html>
