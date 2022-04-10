@@ -12,6 +12,7 @@
 <table>
 
     <thead>
+    <th>Id</th>
     <th>Type de document</th>
     <th>Titre</th>
     <th>Nb Available</th>
@@ -19,6 +20,7 @@
     <tbody>
         <th:block th:each="document, stat : ${documents}">
             <tr>
+                <td th:text="${document.getId()}"></td>
                 <td th:text="${document.getType()}"></td>
                 <td th:text="${document.getName()}"></td>
                 <td th:text="${document.getNbAvailable()}"></td>

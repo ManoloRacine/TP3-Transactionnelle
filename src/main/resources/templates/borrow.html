@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/borrow}" th:object="${borrowForm}" method="post">
+    <table>
+        <tr>
+            <td><label>Document id</label></td>
+            <td><input type="number" th:field="*{documentId}"></td>
+        </tr>
+
+        <tr>
+            <td><label>Client id</label></td>
+            <td><input type="number" th:field="*{clientId}"></td>
+        </tr>
+
+        <tr>
+            <td><label>number of days</label></td>
+            <td><input type="number" th:field="*{nbDays}"></td>
+        </tr>
+
+        <tr>
+            <td><input type="submit" value="save"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

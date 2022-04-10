@@ -3,6 +3,7 @@ package com.manolo.tp3transactionnelle.controllers;
 import com.manolo.tp3transactionnelle.DTO.ClientDTO;
 import com.manolo.tp3transactionnelle.DTO.DocumentSimpleDTO;
 import com.manolo.tp3transactionnelle.forms.BookForm;
+import com.manolo.tp3transactionnelle.forms.BorrowForm;
 import com.manolo.tp3transactionnelle.forms.ClientForm;
 import com.manolo.tp3transactionnelle.model.Book;
 import com.manolo.tp3transactionnelle.model.Client;
@@ -109,5 +110,20 @@ public class RootController {
         employeeService.createBook(bookForm.toBook()) ;
         model.addAttribute("bookForm", bookForm) ;
         return "redirect:/" ;
+    }
+
+    @GetMapping("/borrow")
+    public String getBorrow(@ModelAttribute BorrowForm borrowForm,
+                            Model model) {
+        borrowForm = new BorrowForm() ;
+        model.addAttribute("borrowForm", borrowForm) ;
+        return "borrow" ;
+    }
+
+    @PostMapping("/borrow")
+    public String postBorrow(@ModelAttribute BorrowForm borrowForm,
+                             Model model) throws Exception {
+        clientService.borrowDocument(borrowForm.getClientId(), borrowForm.getDocumentId(), borrowForm.getNbDays()) ;
+        return "redirect:client/" + borrowForm.getClientId() ;
     }
 }
