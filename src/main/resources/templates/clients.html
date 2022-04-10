@@ -9,6 +9,7 @@
 
     <thead>
     <th>id</th>
+    <th>prenom du client</th>
     <th>nom du client</th>
     </thead>
     <tbody>
@@ -16,6 +17,7 @@
         <tr>
             <td th:text="${clients.getId()}"></td>
             <td th:text="${clients.getFirstName()}"></td>
+            <td th:text="${clients.getLastName()}"></td>
         </tr>
     </th:block>
     </tbody>

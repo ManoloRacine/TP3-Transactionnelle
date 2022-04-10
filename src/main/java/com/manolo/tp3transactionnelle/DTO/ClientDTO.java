@@ -16,11 +16,14 @@ public class ClientDTO {
     private String firstName ;
     private String lastName ;
 
-    private List<Borrowing> borrowings = new ArrayList<>();
+    private List<BorrowingDTO> borrowings = new ArrayList<>();
 
     public ClientDTO(Client client) {
         this.id = client.getId() ;
         this.firstName = client.getFirstName() ;
         this.lastName = client.getLastName() ;
+        for (Borrowing borrowing : client.getBorrowings()) {
+            this.borrowings.add(new BorrowingDTO(borrowing)) ;
+        }
     }
 }

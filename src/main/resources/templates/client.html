@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="${client.getId() + ' ' + client.getFirstName() + ' ' + client.getLastName()}"></h1>
+
+<table>
+
+    <thead>
+    <th>id</th>
+    <th>location date</th>
+    <th>return</th>
+    <th>document</th>
+    </thead>
+    <tbody>
+    <th:block th:each="borrowing, stat : ${client.getBorrowings()}">
+        <tr>
+            <td th:text="${borrowing.getId()}"></td>
+            <td th:text="${borrowing.getLocationDate()}"></td>
+            <td th:text="${borrowing.getReturnDate()}"></td>
+            <td th:text="${borrowing.getBorrowedDocument().getName()}"></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>
