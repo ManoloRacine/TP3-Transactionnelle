@@ -18,7 +18,7 @@ public class Borrowing {
     public LocalDateTime locationDate ;
     public LocalDateTime returnDate ;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     public Document borrowedDocument ;
 }

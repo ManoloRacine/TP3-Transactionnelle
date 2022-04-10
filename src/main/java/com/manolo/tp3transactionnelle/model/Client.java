@@ -6,8 +6,10 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,8 +21,8 @@ import java.util.List;
 public class Client extends Account {
     private double totalLateFees ;
 
-    @OneToMany
-    private List<Borrowing> borrowings ;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Borrowing> borrowings = new ArrayList<>();
 
     public void payLateFees() {
 

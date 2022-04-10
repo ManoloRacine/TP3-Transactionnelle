@@ -27,7 +27,7 @@ public class Tp3TransactionnelleApplication implements CommandLineRunner {
     }
 
 
-    public void run(String... args) {
+    public void run(String... args) throws Exception {
         System.out.println("test");
         long idClient = adminService.createClient("firstName", "lastName", "password") ;
         System.out.println(adminService.getClientByIdWithBorrowing(idClient));
@@ -41,6 +41,8 @@ public class Tp3TransactionnelleApplication implements CommandLineRunner {
         System.out.println(clientService.researchDocumentByCategory("testg"));
         System.out.println(clientService.researchDocumentContainingTitle("e1"));
 
-        clientService.borrowDocument(idClient, idBook) ;
+        clientService.borrowDocument(idClient, idBook, 2) ;
+        System.out.println(adminService.getClientByIdWithBorrowing(idClient));
+        System.out.println(adminService.getClientByIdWithBorrowing(idClient).get().getBorrowings().get(0).borrowedDocument.getNbAvailable());
     }
 }

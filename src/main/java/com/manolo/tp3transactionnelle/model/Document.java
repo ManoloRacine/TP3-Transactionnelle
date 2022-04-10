@@ -22,7 +22,6 @@ public abstract class Document {
     private String name ;
     private String author ;
     private int releaseYear ;
-    private boolean isBorrowed = false;
     private int nbAvailable ;
     private String genre ;
 

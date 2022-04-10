@@ -4,6 +4,7 @@ import com.manolo.tp3transactionnelle.model.Account;
 import com.manolo.tp3transactionnelle.model.Client;
 import com.manolo.tp3transactionnelle.repository.AccountRepository;
 import com.manolo.tp3transactionnelle.repository.BorrowingRepository;
+import com.manolo.tp3transactionnelle.repository.ClientRepository;
 import com.manolo.tp3transactionnelle.repository.DocumentRepository;
 import org.springframework.stereotype.Component;
 
@@ -14,11 +15,14 @@ public class AdminService {
     private AccountRepository accountRepository ;
     private BorrowingRepository borrowingRepository ;
     private DocumentRepository documentRepository ;
+    private ClientRepository clientRepository ;
 
-    public AdminService(AccountRepository accountRepository, BorrowingRepository borrowingRepository, DocumentRepository documentRepository) {
+    public AdminService(AccountRepository accountRepository, BorrowingRepository borrowingRepository, DocumentRepository documentRepository,
+                         ClientRepository clientRepository) {
         this.accountRepository = accountRepository ;
         this.borrowingRepository = borrowingRepository ;
         this.documentRepository = documentRepository ;
+        this.clientRepository = clientRepository ;
     }
 
     public long createClient(String firstName, String lastName, String password) {
@@ -28,6 +32,6 @@ public class AdminService {
     }
 
     public Optional<Client> getClientByIdWithBorrowing(long id) {
-        return accountRepository.findClientByIdWithBorrowings(id) ;
+        return clientRepository.findClientByIdWithBorrowings(id) ;
     }
 }
