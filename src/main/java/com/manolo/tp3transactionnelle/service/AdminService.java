@@ -8,6 +8,7 @@ import com.manolo.tp3transactionnelle.repository.ClientRepository;
 import com.manolo.tp3transactionnelle.repository.DocumentRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -33,5 +34,9 @@ public class AdminService {
 
     public Optional<Client> getClientByIdWithBorrowing(long id) {
         return clientRepository.findClientByIdWithBorrowings(id) ;
+    }
+
+    public List<Client> getClients() {
+        return clientRepository.findAll() ;
     }
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+
+    <thead>
+    <th>id</th>
+    <th>nom du client</th>
+    </thead>
+    <tbody>
+    <th:block th:each="clients, stat : ${clients}">
+        <tr>
+            <td th:text="${clients.getId()}"></td>
+            <td th:text="${clients.getFirstName()}"></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>
