@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/clientcreate}" th:object="${clientForm}" method="post">
+    <table>
+        <tr>
+            <td><label>First Name</label></td>
+            <td><input type="text" th:field="*{firstName}"></td>
+        </tr>
+
+        <tr>
+            <td><label>Last Name</label></td>
+            <td><input type="text" th:field="*{lastName}"></td>
+        </tr>
+
+        <tr>
+            <td><label>Password</label></td>
+            <td><input type="text" th:field="*{password}"></td>
+        </tr>
+
+        <tr>
+            <td><input type="submit" value="save"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

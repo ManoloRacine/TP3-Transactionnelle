@@ -1,5 +1,6 @@
 package com.manolo.tp3transactionnelle.service;
 
+import com.manolo.tp3transactionnelle.forms.ClientForm;
 import com.manolo.tp3transactionnelle.model.Account;
 import com.manolo.tp3transactionnelle.model.Client;
 import com.manolo.tp3transactionnelle.repository.AccountRepository;
@@ -28,6 +29,11 @@ public class AdminService {
 
     public long createClient(String firstName, String lastName, String password) {
         Client client = Client.builder().firstName(firstName).lastName(lastName).password(password).build() ;
+        accountRepository.save(client) ;
+        return client.getId() ;
+    }
+
+    public long createClient(Client client) {
         accountRepository.save(client) ;
         return client.getId() ;
     }
