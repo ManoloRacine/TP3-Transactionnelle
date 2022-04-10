@@ -49,5 +49,10 @@ public class EmployeeService {
         return book.getId() ;
     }
 
+    public long createBook(Book book) {
+        documentRepository.save(book) ;
+        return book.getId() ;
+    }
+
 
 }

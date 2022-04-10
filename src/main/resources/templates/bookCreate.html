@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/bookcreate}" th:object="${bookForm}" method="post">
+    <table>
+        <tr>
+            <td><label>Name</label></td>
+            <td><input type="text" th:field="*{name}"></td>
+        </tr>
+
+        <tr>
+            <td><label>author</label></td>
+            <td><input type="text" th:field="*{author}"></td>
+        </tr>
+
+        <tr>
+            <td><label>release year</label></td>
+            <td><input type="number" th:field="*{releaseYear}"></td>
+        </tr>
+
+        <tr>
+            <td><label>number available</label></td>
+            <td><input type="number" th:field="*{nbAvailable}"></td>
+        </tr>
+
+        <tr>
+            <td><label>genre</label></td>
+            <td><input type="text" th:field="*{genre}"></td>
+        </tr>
+
+        <tr>
+            <td><label>number of pages</label></td>
+            <td><input type="text" th:field="*{nbOfPages}"></td>
+        </tr>
+
+        <tr>
+            <td><input type="submit" value="save"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

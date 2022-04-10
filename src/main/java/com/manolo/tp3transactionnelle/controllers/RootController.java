@@ -2,13 +2,17 @@ package com.manolo.tp3transactionnelle.controllers;
 
 import com.manolo.tp3transactionnelle.DTO.ClientDTO;
 import com.manolo.tp3transactionnelle.DTO.DocumentSimpleDTO;
+import com.manolo.tp3transactionnelle.forms.BookForm;
 import com.manolo.tp3transactionnelle.forms.ClientForm;
+import com.manolo.tp3transactionnelle.model.Book;
 import com.manolo.tp3transactionnelle.model.Client;
 import com.manolo.tp3transactionnelle.model.Document;
 import com.manolo.tp3transactionnelle.service.AdminService;
 import com.manolo.tp3transactionnelle.service.ClientService;
+import com.manolo.tp3transactionnelle.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,9 +34,13 @@ public class RootController {
 
     private AdminService adminService ;
 
-    public RootController(ClientService clientService, AdminService adminService) {
+    private EmployeeService employeeService ;
+
+    public RootController(ClientService clientService, AdminService adminService,
+                          EmployeeService employeeService) {
         this.clientService = clientService ;
         this.adminService = adminService ;
+        this.employeeService = employeeService ;
     }
 
     @GetMapping("/")
@@ -84,5 +92,22 @@ public class RootController {
         adminService.createClient(clientForm.toClient()) ;
         model.addAttribute("clientForm", clientForm) ;
         return "redirect:clients" ;
+    }
+
+    @GetMapping("/bookcreate")
+    public String getBookCreate(@ModelAttribute BookForm bookForm,
+                                Model model) {
+        bookForm = new BookForm(new Book()) ;
+        model.addAttribute("bookForm", bookForm) ;
+        return "bookCreate" ;
+    }
+
+    @PostMapping("/bookcreate")
+    public String bookPost(@ModelAttribute BookForm bookForm,
+                           Model model,
+                           RedirectAttributes redirectAttributes) {
+        employeeService.createBook(bookForm.toBook()) ;
+        model.addAttribute("bookForm", bookForm) ;
+        return "redirect:/" ;
     }
 }
