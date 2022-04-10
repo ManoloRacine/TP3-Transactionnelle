@@ -15,6 +15,7 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 @Component
 public class ClientService {
@@ -52,7 +53,7 @@ public class ClientService {
     }
 
     @Transactional
-    public void borrowDocument(long clientId, long documentId, int nbDays) throws Exception {
+    public long borrowDocument(long clientId, long documentId, int nbDays) throws Exception {
         Optional<Client> client = clientRepository.findClientByIdWithBorrowings(clientId) ;
 
         if (client.isEmpty()) throw new Exception() ;
@@ -71,6 +72,28 @@ public class ClientService {
 
         documentRepository.save(document) ;
         borrowingRepository.save(borrowing) ;
+        clientRepository.save(client.get()) ;
+
+        return borrowing.getId() ;
+    }
+
+    @Transactional
+    public void returnDocument(long clientId, long borrowId) throws Exception {
+        Optional<Client> client = clientRepository.findClientByIdWithBorrowings(clientId) ;
+
+        if (client.isEmpty()) throw new Exception() ;
+
+        Borrowing borrowing = borrowingRepository.getById(borrowId) ;
+
+        Predicate<Borrowing> predicate = borrowingFromList -> borrowingFromList.getId() == borrowId ;
+        //todo throw exception if doesnt contain borrow id ?
+        client.get().getBorrowings().removeIf(predicate) ;
+
+        Document borrowedDocument = borrowing.getBorrowedDocument() ;
+
+        borrowedDocument.setNbAvailable(borrowedDocument.getNbAvailable() + 1);
+
+        documentRepository.save(borrowedDocument) ;
         clientRepository.save(client.get()) ;
     }
 }

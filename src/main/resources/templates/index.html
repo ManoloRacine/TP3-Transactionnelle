@@ -19,7 +19,7 @@
     <tbody>
         <th:block th:each="document, stat : ${documents}">
             <tr>
-                <td th:text="${document.getClass().getSimpleName()}"></td>
+                <td th:text="${document.getType()}"></td>
                 <td th:text="${document.getName()}"></td>
                 <td th:text="${document.getNbAvailable()}"></td>
             </tr>
