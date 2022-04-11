@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/return}" th:object="${returnForm}" method="post">
+    <table>
+        <tr>
+            <td><label>borrowing id</label></td>
+            <td><input type="number" th:field="*{borrowId}"></td>
+        </tr>
+
+        <tr>
+            <td><label>Client id</label></td>
+            <td><input type="number" th:field="*{clientId}"></td>
+        </tr>
+
+        <tr>
+            <td><input type="submit" value="return"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
