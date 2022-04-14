@@ -24,13 +24,6 @@ public class Client extends Account {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Borrowing> borrowings = new ArrayList<>();
 
-    public void payLateFees() {
-
-    }
-
-    public void returnDocument() {
-
-    }
 
     public void borrowDocument(Borrowing borrowing) {
         borrowings.add(borrowing) ;

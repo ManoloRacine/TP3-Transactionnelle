@@ -1,5 +1,7 @@
 package com.manolo.tp3transactionnelle.service;
 
+import com.manolo.tp3transactionnelle.exceptions.NonExistingClientException;
+import com.manolo.tp3transactionnelle.exceptions.UnavailableDocumentException;
 import com.manolo.tp3transactionnelle.model.Borrowing;
 import com.manolo.tp3transactionnelle.model.Client;
 import com.manolo.tp3transactionnelle.model.Document;
@@ -61,7 +63,7 @@ public class ClientService {
         Document document = documentRepository.getById(documentId) ;
 
 
-        if (document.getNbAvailable() == 0) throw new Exception() ; //todo personalised exception
+        if (document.getNbAvailable() == 0) throw new UnavailableDocumentException(); //todo personalised exception
 
         Borrowing borrowing = Borrowing.builder().locationDate(LocalDateTime.now()).
                 returnDate(LocalDateTime.now().plus(nbDays, ChronoUnit.DAYS)).borrowedDocument(document).build() ;
@@ -81,7 +83,7 @@ public class ClientService {
     public void returnDocument(long clientId, long borrowId) throws Exception {
         Optional<Client> client = clientRepository.findClientByIdWithBorrowings(clientId) ;
 
-        if (client.isEmpty()) throw new Exception() ;
+        if (client.isEmpty()) throw new NonExistingClientException() ;
 
         Borrowing borrowing = borrowingRepository.getById(borrowId) ;
 
