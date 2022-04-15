@@ -54,6 +54,7 @@ public class Tp3TransactionnelleApplication implements CommandLineRunner {
         clientService.returnDocument(idClient, borrowId);
         System.out.println(adminService.getClientByIdWithBorrowing(idClient));
 
+        
         clientService.borrowDocument(idClient, idBook, 2) ;
     }
 }

@@ -11,16 +11,19 @@
         <tr>
             <td><label>Document id</label></td>
             <td><input type="number" th:field="*{documentId}"></td>
+            <td th:if="${#fields.hasErrors('documentId')}">invalid document id</td>
         </tr>
 
         <tr>
             <td><label>Client id</label></td>
             <td><input type="number" th:field="*{clientId}"></td>
+            <td th:if="${#fields.hasErrors('clientId')}">invalid client id</td>
         </tr>
 
         <tr>
             <td><label>number of days</label></td>
             <td><input type="number" th:field="*{nbDays}"></td>
+            <td th:if="${#fields.hasErrors('nbDays')}">invalid number of days</td>
         </tr>
 
         <tr>

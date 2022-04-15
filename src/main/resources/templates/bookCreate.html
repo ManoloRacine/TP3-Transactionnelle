@@ -11,31 +11,37 @@
         <tr>
             <td><label>Name</label></td>
             <td><input type="text" th:field="*{name}"></td>
+            <td th:if="${#fields.hasErrors('name')}">invalid name</td>
         </tr>
 
         <tr>
             <td><label>author</label></td>
             <td><input type="text" th:field="*{author}"></td>
+            <td th:if="${#fields.hasErrors('author')}">invalid author</td>
         </tr>
 
         <tr>
             <td><label>release year</label></td>
             <td><input type="number" th:field="*{releaseYear}"></td>
+            <td th:if="${#fields.hasErrors('releaseYear')}">invalid release year</td>
         </tr>
 
         <tr>
             <td><label>number available</label></td>
             <td><input type="number" th:field="*{nbAvailable}"></td>
+            <td th:if="${#fields.hasErrors('nbAvailable')}">invalid number of available documents</td>
         </tr>
 
         <tr>
             <td><label>genre</label></td>
             <td><input type="text" th:field="*{genre}"></td>
+            <td th:if="${#fields.hasErrors('nbAvailable')}">invalid genre</td>
         </tr>
 
         <tr>
             <td><label>number of pages</label></td>
             <td><input type="text" th:field="*{nbOfPages}"></td>
+            <td th:if="${#fields.hasErrors('nbOfPages')}">invalid number of pages</td>
         </tr>
 
         <tr>

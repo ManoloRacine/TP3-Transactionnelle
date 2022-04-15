@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -88,9 +90,15 @@ public class RootController {
     }
 
     @PostMapping("/clientcreate")
-    public String clientPost(@ModelAttribute ClientForm clientForm,
-                             Model model,
-                             RedirectAttributes redirectAttributes) {
+    public String clientPost(@Valid @ModelAttribute ClientForm clientForm,
+                             BindingResult errors,
+                             Model model
+                             ) {
+
+        if (errors.hasErrors()) {
+            return "/clientCreate" ;
+        }
+
         adminService.createClient(clientForm.toClient()) ;
         model.addAttribute("clientForm", clientForm) ;
         return "redirect:clients" ;
@@ -105,9 +113,14 @@ public class RootController {
     }
 
     @PostMapping("/bookcreate")
-    public String bookPost(@ModelAttribute BookForm bookForm,
-                           Model model,
-                           RedirectAttributes redirectAttributes) {
+    public String bookPost(@Valid @ModelAttribute BookForm bookForm,
+                           BindingResult errors,
+                           Model model) {
+
+        if (errors.hasErrors()) {
+            return "bookCreate" ;
+        }
+
         employeeService.createBook(bookForm.toBook()) ;
         model.addAttribute("bookForm", bookForm) ;
         return "redirect:/" ;
@@ -122,8 +135,13 @@ public class RootController {
     }
 
     @PostMapping("/borrow")
-    public String postBorrow(@ModelAttribute BorrowForm borrowForm,
-                             Model model) throws Exception {
+    public String postBorrow(@Valid @ModelAttribute BorrowForm borrowForm,
+                             BindingResult errors) throws Exception {
+
+        if (errors.hasErrors()) {
+            return "borrow" ;
+        }
+
         clientService.borrowDocument(borrowForm.getClientId(), borrowForm.getDocumentId(), borrowForm.getNbDays()) ;
         return "redirect:client/" + borrowForm.getClientId() ;
     }
@@ -137,8 +155,13 @@ public class RootController {
     }
 
     @PostMapping("/return")
-    public String postReturn(@ModelAttribute ReturnForm returnForm,
-                             Model model) throws Exception {
+    public String postReturn(@Valid @ModelAttribute ReturnForm returnForm,
+                             BindingResult errors) throws Exception {
+
+        if (errors.hasErrors()) {
+            return "return" ;
+        }
+
         clientService.returnDocument(returnForm.getClientId(), returnForm.getBorrowId());
         return "redirect:client/" + returnForm.getClientId() ;
     }
