@@ -22,8 +22,8 @@
     <th:block th:each="borrowing, stat : ${client.getBorrowings()}">
         <tr>
             <td th:text="${borrowing.getId()}"></td>
-            <td th:text="${borrowing.getLocationDate()}"></td>
-            <td th:text="${borrowing.getReturnDate()}"></td>
+            <td th:text="${borrowing.getLocationDate().getMonth()} + ' ' + ${borrowing.getLocationDate().getDayOfMonth()}"></td>
+            <td th:text="${borrowing.getReturnDate().getMonth()} + ' ' + ${borrowing.getReturnDate().getDayOfMonth()}"></td>
             <td th:text="${borrowing.getBorrowedDocument().getName()}"></td>
         </tr>
     </th:block>

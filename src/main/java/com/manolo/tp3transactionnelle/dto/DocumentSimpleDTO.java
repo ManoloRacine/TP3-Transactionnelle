@@ -1,4 +1,4 @@
-package com.manolo.tp3transactionnelle.DTO;
+package com.manolo.tp3transactionnelle.dto;
 
 import com.manolo.tp3transactionnelle.model.Document;
 import lombok.Data;

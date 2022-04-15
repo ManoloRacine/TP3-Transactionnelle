@@ -4,7 +4,6 @@ import com.manolo.tp3transactionnelle.model.Client;
 import lombok.Data;
 
 import javax.validation.constraints.*;
-import java.time.format.DateTimeFormatter;
 
 @Data
 public class ClientForm {

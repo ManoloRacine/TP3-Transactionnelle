@@ -1,11 +1,9 @@
-package com.manolo.tp3transactionnelle.DTO;
+package com.manolo.tp3transactionnelle.dto;
 
 import com.manolo.tp3transactionnelle.model.Borrowing;
 import com.manolo.tp3transactionnelle.model.Client;
 import lombok.Data;
 
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 

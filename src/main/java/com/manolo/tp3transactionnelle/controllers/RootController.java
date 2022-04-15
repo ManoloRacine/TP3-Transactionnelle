@@ -1,7 +1,7 @@
 package com.manolo.tp3transactionnelle.controllers;
 
-import com.manolo.tp3transactionnelle.DTO.ClientDTO;
-import com.manolo.tp3transactionnelle.DTO.DocumentSimpleDTO;
+import com.manolo.tp3transactionnelle.dto.ClientDTO;
+import com.manolo.tp3transactionnelle.dto.DocumentSimpleDTO;
 import com.manolo.tp3transactionnelle.forms.BookForm;
 import com.manolo.tp3transactionnelle.forms.BorrowForm;
 import com.manolo.tp3transactionnelle.forms.ClientForm;
@@ -14,7 +14,6 @@ import com.manolo.tp3transactionnelle.service.ClientService;
 import com.manolo.tp3transactionnelle.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,9 +21,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
